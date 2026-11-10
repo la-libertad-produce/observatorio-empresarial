@@ -162,3 +162,19 @@ create table if not exists auditoria (
   creado_en   timestamptz not null default now()
 );
 create index if not exists auditoria_fecha_idx on auditoria(creado_en desc);
+
+-- Seguridad en Supabase: se activa RLS sin políticas en todas las tablas.
+-- Así la API pública de Supabase (PostgREST) no expone ningún dato; la aplicación
+-- se conecta directamente con el rol propietario, que no está sujeto a RLS.
+alter table subgerencias enable row level security;
+alter table sectores     enable row level security;
+alter table indicadores  enable row level security;
+alter table usuarios     enable row level security;
+alter table sesiones     enable row level security;
+alter table cargas       enable row level security;
+alter table valores      enable row level security;
+alter table documentos   enable row level security;
+alter table metas        enable row level security;
+alter table actores      enable row level security;
+alter table enlaces      enable row level security;
+alter table auditoria    enable row level security;
