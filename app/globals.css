@@ -1,24 +1,26 @@
 :root {
-  --tinta: #18262e;
-  --tinta-2: #3e4a53;
-  --tinta-3: #5a6670;
-  --fondo: #f7f6f2;
+  /* Paleta tomada del logo institucional: azul GRLL #005799 y blanco */
+  --tinta: #0f2338;
+  --tinta-2: #3b4b5c;
+  --tinta-3: #566577;
+  --fondo: #f4f7fb;
   --papel: #ffffff;
-  --linea: #dcd9d0;
-  --linea-suave: #eceae3;
-  --linea-fuerte: #b9b5aa;
-  --marca: #0e5a57;
-  --marca-osc: #093d3b;
-  --marca-claro: #e6f0ef;
-  --acento: #a4621a;
-  --sube: #0e5a57;
-  --baja: #a3352a;
-  --aviso-fondo: #f3e6d3;
-  --aviso-tinta: #5e3a10;
-  --ok-fondo: #d7e9e7;
-  --ok-tinta: #0b4a47;
-  --error-fondo: #f6dedb;
-  --error-tinta: #7d241b;
+  --linea: #d6dee7;
+  --linea-suave: #e8edf3;
+  --linea-fuerte: #aebbc9;
+  --marca: #005799;
+  --marca-osc: #003f70;
+  --marca-claro: #e5eef7;
+  --marca-media: #7fb0dc;
+  --acento: #2f86c8;
+  --sube: #005799;
+  --baja: #b42318;
+  --aviso-fondo: #fdf0d5;
+  --aviso-tinta: #6b4300;
+  --ok-fondo: #dcefe3;
+  --ok-tinta: #1d6b3a;
+  --error-fondo: #fbe2df;
+  --error-tinta: #8a1c12;
   --radio: 6px;
   --ancho: 1200px;
   --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -33,7 +35,7 @@ a:hover { color: var(--marca-osc); }
 h1, h2, h3 { line-height: 1.2; margin: 0; }
 p { margin: 0; }
 img, svg { max-width: 100%; }
-:focus-visible { outline: 3px solid #c8862e; outline-offset: 2px; }
+:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
 
 .contenedor { max-width: var(--ancho); margin: 0 auto; padding: 0 32px; }
 @media (max-width: 640px) { .contenedor { padding: 0 16px; } }
@@ -41,29 +43,40 @@ img, svg { max-width: 100%; }
 .saltar { position: absolute; left: -999px; top: 0; background: var(--papel); padding: 8px 12px; z-index: 10; }
 .saltar:focus { left: 8px; }
 
-/* Barra institucional y encabezado */
-.barra-inst { background: var(--tinta); color: #d5dce0; font-size: 13px; }
-.barra-inst .contenedor { display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: center; min-height: 36px; }
-.barra-inst .sep { opacity: .6; }
-.encabezado { background: var(--papel); border-bottom: 1px solid var(--linea); }
-.encabezado .contenedor { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; min-height: 76px; padding-top: 10px; padding-bottom: 10px; }
-.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--tinta); }
-.logo:hover { color: var(--tinta); }
+/* Banda institucional (logo) y encabezado azul */
+.banda-logo { background: var(--papel); border-bottom: 1px solid var(--linea); }
+.banda-logo .contenedor { display: flex; align-items: center; min-height: 92px; padding-top: 10px; padding-bottom: 10px; }
+.banda-logo img { display: block; height: 72px; width: auto; max-width: 100%; }
+.encabezado { background: var(--marca); color: #fff; }
+.encabezado .contenedor { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 28px; min-height: 68px; padding-top: 8px; padding-bottom: 8px; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+.logo:hover { color: #fff; }
 .logo-txt { display: flex; flex-direction: column; line-height: 1.15; }
 .logo-txt strong { font-size: 18px; }
-.logo-txt span { font-size: 13px; color: var(--tinta-3); }
-.nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
-.nav a { color: #2f3b44; text-decoration: none; font-size: 15px; font-weight: 500; padding: 10px 0; border-bottom: 2px solid transparent; }
-.nav a:hover { color: var(--marca); }
-.nav a[aria-current='page'] { color: var(--marca); border-bottom-color: var(--marca); }
+.logo-txt span { font-size: 13px; color: #cfe0f1; }
+.nav { display: flex; flex-wrap: wrap; gap: 0 22px; }
+.nav a { color: #e3eef8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 0 10px; border-bottom: 3px solid transparent; }
+.nav a:hover { color: #fff; border-bottom-color: rgba(255,255,255,.45); }
+.nav a[aria-current='page'] { color: #fff; font-weight: 600; border-bottom-color: #fff; }
+.encabezado :focus-visible { outline-color: #fff; }
+.encabezado .btn-s { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+.encabezado .btn-s:hover { background: rgba(255,255,255,.12); }
+.encabezado .nota { color: #cfe0f1; }
+@media (max-width: 640px) {
+  .banda-logo .contenedor { min-height: 68px; }
+  .banda-logo img { height: 52px; }
+  .encabezado .contenedor { min-height: 60px; }
+  .nav { gap: 0 16px; }
+  .nav a { font-size: 14px; padding: 8px 0 6px; }
+}
 
 .franja-demo { background: var(--aviso-fondo); color: var(--aviso-tinta); font-size: 13px; }
 .franja-demo .contenedor { padding-top: 9px; padding-bottom: 9px; }
 
-.pie { background: var(--tinta); color: #c9d1d6; font-size: 14px; margin-top: 64px; }
+.pie { background: var(--marca-osc); color: #d3e1ef; font-size: 14px; margin-top: 64px; }
 .pie .contenedor { padding-top: 36px; padding-bottom: 36px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; }
 .pie strong { color: #fff; }
-.pie a { color: #e3e8eb; }
+.pie a { color: #ffffff; }
 
 /* Tipografía y bloques */
 .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-3); }
@@ -120,7 +133,7 @@ img, svg { max-width: 100%; }
 .tabla td { padding: 12px; border-bottom: 1px solid var(--linea-suave); vertical-align: top; }
 .tabla .der { text-align: right; }
 .tabla .nw { white-space: nowrap; }
-.tabla tr.resalte td { background: #fbf6ee; }
+.tabla tr.resalte td { background: #fff7e6; }
 
 /* Formularios */
 .campo { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 500; color: var(--tinta-2); }
@@ -153,7 +166,7 @@ img, svg { max-width: 100%; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; }
 .chip { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--linea-fuerte); background: var(--papel); font: 500 14px var(--sans); color: var(--tinta); cursor: pointer; }
 .chip[aria-pressed='true'] { background: var(--tinta); border-color: var(--tinta); color: #fff; }
-.mapa { height: 380px; border-radius: 4px; overflow: hidden; background: #f1efe8; }
+.mapa { height: 380px; border-radius: 4px; overflow: hidden; background: #eef3f8; }
 
 /* Portada */
 .hero { display: flex; flex-wrap: wrap; gap: 40px; padding-top: 56px; padding-bottom: 48px; align-items: stretch; }

@@ -15,8 +15,8 @@ export function Sparkline({ valores, ancho = 120, alto = 36 }: { valores: number
   const ult = valores.length - 1;
   return (
     <svg width={ancho} height={alto} viewBox={`0 0 ${ancho} ${alto}`} aria-hidden="true">
-      <path d={d} fill="none" stroke="#0e5a57" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
-      <circle cx={x(ult)} cy={y(valores[ult])} r="4" fill="#a4621a" stroke="#fff" strokeWidth="2" />
+      <path d={d} fill="none" stroke="#005799" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+      <circle cx={x(ult)} cy={y(valores[ult])} r="4" fill="#003f70" stroke="#fff" strokeWidth="2" />
     </svg>
   );
 }

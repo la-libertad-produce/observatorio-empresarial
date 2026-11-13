@@ -9,11 +9,12 @@ import { formatoNumero } from '@/lib/formato';
 
 echarts.use([BarChart, LineChart, GridComponent, TooltipComponent, SVGRenderer]);
 
-const TINTA = '#18262e';
-const TINTA_3 = '#5a6670';
-const GRILLA = '#eceae3';
-const MARCA = '#0e5a57';
-const ACENTO = '#a4621a';
+const TINTA = '#0f2338';
+const TINTA_3 = '#566577';
+const GRILLA = '#e8edf3';
+const MARCA = '#005799'; // azul institucional
+const PREVIO = '#5e98d0'; // periodos anteriores (contraste 3:1 sobre blanco)
+const ACENTO = '#003f70'; // último periodo, resaltado
 const FUENTE = "'IBM Plex Sans', system-ui, sans-serif";
 
 const formatear = (v: number, dec: number) => formatoNumero(v, dec);
@@ -45,9 +46,9 @@ export function GraficoSerie({ etiquetas, valores, unidad, decimales, alto = 300
     grid: { left: 8, right: 8, top: 28, bottom: 8, containLabel: true },
     tooltip: {
       trigger: 'axis',
-      axisPointer: { type: 'shadow', shadowStyle: { color: 'rgba(24,38,46,0.06)' } },
+      axisPointer: { type: 'shadow', shadowStyle: { color: 'rgba(0,87,153,0.07)' } },
       backgroundColor: '#ffffff',
-      borderColor: '#dcd9d0',
+      borderColor: '#d6dee7',
       textStyle: { color: TINTA, fontFamily: FUENTE, fontSize: 13 },
       valueFormatter: (v: unknown) => `${formatear(Number(v), decimales)} ${unidad.toLowerCase()}`,
     },
@@ -55,7 +56,7 @@ export function GraficoSerie({ etiquetas, valores, unidad, decimales, alto = 300
       type: 'category',
       data: etiquetas,
       axisTick: { show: false },
-      axisLine: { lineStyle: { color: '#b9b5aa' } },
+      axisLine: { lineStyle: { color: '#aebbc9' } },
       axisLabel: { color: TINTA_3, fontSize: 11, hideOverlap: true },
     },
     yAxis: {
@@ -70,7 +71,7 @@ export function GraficoSerie({ etiquetas, valores, unidad, decimales, alto = 300
         name: unidad,
         barMaxWidth: 28,
         barCategoryGap: '24%',
-        data: valores.map((v, i) => ({ value: v, itemStyle: { color: i === ultimo ? ACENTO : MARCA, borderRadius: [4, 4, 0, 0] } })),
+        data: valores.map((v, i) => ({ value: v, itemStyle: { color: i === ultimo ? ACENTO : PREVIO, borderRadius: [4, 4, 0, 0] } })),
         label: {
           show: true,
           position: 'top',
@@ -98,7 +99,7 @@ export function GraficoSectores({ sectores, valores, unidad, decimales, descripc
     tooltip: {
       trigger: 'item',
       backgroundColor: '#ffffff',
-      borderColor: '#dcd9d0',
+      borderColor: '#d6dee7',
       textStyle: { color: TINTA, fontFamily: FUENTE, fontSize: 13 },
       formatter: (p: { name: string; value: number }) => `${p.name}<br/><b>${formatear(p.value, decimales)}</b> ${unidad.toLowerCase()}`,
     },

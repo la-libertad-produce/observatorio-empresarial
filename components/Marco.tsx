@@ -5,13 +5,20 @@ import { NavEnlaces } from './NavEnlaces';
 
 export const MODO_DEMO = process.env.NEXT_PUBLIC_MODO_DEMO === 'true';
 
-export function BarraInstitucional() {
+export function BandaInstitucional() {
   return (
-    <div className="barra-inst">
+    <div className="banda-logo">
       <div className="contenedor">
-        <span>Gobierno Regional La Libertad</span>
-        <span className="sep" aria-hidden="true">|</span>
-        <span>Gerencia Regional de la Producción</span>
+        <picture>
+          <source srcSet="/logo-grll-produccion.webp" type="image/webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-grll-produccion.png"
+            width={706}
+            height={168}
+            alt="Gobierno Regional La Libertad, Gerencia Regional de la Producción"
+          />
+        </picture>
       </div>
     </div>
   );
@@ -39,7 +46,7 @@ export async function Encabezado() {
   ];
   return (
     <>
-      <BarraInstitucional />
+      <BandaInstitucional />
       <header className="encabezado">
         <div className="contenedor">
           <Logo />

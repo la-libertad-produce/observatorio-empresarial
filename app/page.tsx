@@ -86,7 +86,7 @@ export default async function Inicio() {
               ['Revisión y publicación', 'La UTF-CTI revisa cada carga y la aprueba o la devuelve con observaciones. Solo los datos aprobados se publican.'],
             ].map(([t, d], i) => (
               <li key={t} className="col">
-                <span className="eyebrow" style={{ color: 'var(--acento)' }}>Paso {i + 1}</span>
+                <span className="eyebrow" style={{ color: 'var(--marca)' }}>Paso {i + 1}</span>
                 <strong style={{ fontSize: 17 }}>{t}</strong>
                 <span className="texto-2" style={{ fontSize: 15 }}>{d}</span>
               </li>

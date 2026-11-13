@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { BarraInstitucional } from '@/components/Marco';
+import { BandaInstitucional } from '@/components/Marco';
 import { Logo } from '@/components/Logo';
 import { NavEnlaces } from '@/components/NavEnlaces';
 import { ETIQUETA_ROL, usuarioActual } from '@/lib/auth';
@@ -34,14 +34,14 @@ export default async function PanelLayout({ children }: { children: React.ReactN
 
   return (
     <>
-      <BarraInstitucional />
+      <BandaInstitucional />
       <header className="encabezado">
         <div className="contenedor">
           <Logo />
           {u && (
             <div className="fila" style={{ gap: 16 }}>
               <span className="col" style={{ gap: 0, textAlign: 'right' }}>
-                <strong style={{ fontSize: 14 }}>{u.nombre}</strong>
+                <strong style={{ fontSize: 14, color: '#fff' }}>{u.nombre}</strong>
                 <span className="nota" style={{ fontSize: 12 }}>{ETIQUETA_ROL[u.rol]}{u.subgerencia_nombre ? ` · ${u.subgerencia_nombre}` : ''}</span>
               </span>
               <form action={salir}><button className="btn btn-s btn-chico" type="submit">Cerrar sesión</button></form>
